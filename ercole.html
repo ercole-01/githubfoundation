@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="""nl
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ercole — Simpele webpagina</title>
+    <meta name="description" content="Een eenvoudige, toegankelijke en responsieve voorbeeldpagina." />
+
+    <style>
+        :root{
+            --bg:#ffffff;
+            --card:#f6f8fb;
+            --text:#0f1724;
+            --muted:#55617a;
+            --accent:#0b63ff;
+            --radius:12px;
+            --gap:1rem;
+            font-size:16px;
+        }
+        [data-theme="dark"]{
+            --bg:#0b1220;
+            --card:#0f1726;
+            --text:#e6eef8;
+            --muted:#9aa4b2;
+            --accent:#6ea8ff;
+        }
+
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            font-family: Inter, Roboto, "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+            background:linear-gradient(180deg, var(--bg), rgba(0,0,0,0.02));
+            color:var(--text);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.45;
+        }
+
+        .container{max-width:960px;margin:0 auto;padding:1.25rem;}
+
+        .site-header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:var(--gap);
+            padding:0.75rem 0;
+        }
+        .brand{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit}
+        .logo{
+            width:44px;height:44px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#60a5fa);
+            display:grid;place-items:center;color:white;font-weight:700;font-size:1.05rem;
+        }
+        nav ul{display:flex;gap:0.5rem;margin:0;padding:0;list-style:none}
+        nav a{
+            padding:0.45rem 0.65rem;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:600;font-size:0.95rem;
+        }
+        nav a:hover, nav a:focus{color:var(--text);background:var(--card)}
+        .actions{display:flex;gap:0.5rem;align-items:center}
+
+        .skip-link{
+            position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;
+        }
+        .skip-link:focus{position:static;width:auto;height:auto;padding:0.5rem 0.75rem;margin-bottom:0.5rem;background:var(--accent);color:#fff;border-radius:6px}
+
+        header + .hero{margin-top:0.5rem}
+        .hero{
+            display:grid;gap:1rem;padding:1.25rem;border-radius:var(--radius);background:linear-gradient(180deg, rgba(11,99,255,0.06), transparent);
+        }
+        .hero h1{margin:0;font-size:1.6rem}
+        .hero p{margin:0;color:var(--muted)}
+
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:1rem;
+            margin-top:1rem;
+        }
+        .card{
+            background:var(--card);
+            padding:1rem;border-radius:10px;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+        }
+        .card h3{margin-top:0;margin-bottom:0.35rem;font-size:1.05rem}
+        .card p{margin:0;color:var(--muted);font-size:0.95rem}
+
+        form{display:grid;gap:0.5rem}
+        label{font-size:0.9rem;color:var(--muted)}
+        input[type="text"],input[type="email"],textarea{
+            padding:0.6rem 0.7rem;border-radius:8px;border:1px solid rgba(0,0,0,0.07);background:transparent;color:var(--text);
+            font-size:0.95rem;resize:vertical;
+        }
+        input:focus,textarea:focus{outline:3px solid rgba(11,99,255,0.12);border-color:var(--accent)}
+        .btn{
+            display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 0.9rem;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:600;
+            cursor:pointer;
+        }
+        .btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(11,99,255,0.12)}
+        .muted{color:var(--muted);font-size:0.9rem}
+
+        .footer{
+            margin-top:2rem;padding:1rem 0;border-top:1px solid rgba(0,0,0,0.04);color:var(--muted);font-size:0.9rem;text-align:center;
+        }
+
+        /* small screens */
+        @media (max-width:560px){
+            .site-header{padding:0.5rem 0}
+            .hero h1{font-size:1.3rem}
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Sla navigatie over</a>
+
+    <div class="container">
+        <header class="site-header" role="banner">
+            <a href="#" class="brand" aria-label="Ercole home">
+                <div class="logo" aria-hidden="true">E</div>
+                <div>
+                    <div style="font-weight:700">Ercole</div>
+                    <div style="font-size:0.8rem;color:var(--muted)">Simpele webpagina</div>
+                </div>
+            </a>
+
+            <nav role="navigation" aria-label="Hoofd navigatie">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#over">Over</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="actions">
+                <button id="theme-toggle" class="btn secondary" aria-pressed="false" title="Wissel thema">☀️</button>
+            </div>
+        </header>
+
+        <main id="main" tabindex="-1">
+            <section id="home" class="hero" aria-labelledby="hero-title">
+                <h1 id="hero-title">Welkom bij Ercole</h1>
+                <p>Een eenvoudige, toegankelijke en responsive demo-pagina. Ideaal als startpunt voor kleine sites of prototypes.</p>
+                <div style="margin-top:0.8rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+                    <a class="btn" href="#contact">Neem contact op</a>
+                    <a class="btn secondary" href="#over">Lees meer</a>
+                </div>
+            </section>
+
+            <section id="over" style="margin-top:1rem">
+                <div class="grid">
+                    <article class="card" aria-labelledby="f1">
+                        <h3 id="f1">Responsief ontwerp</h3>
+                        <p>De lay-out past zich aan elk scherm aan, van mobiel tot desktop, zonder extra frameworks.</p>
+                    </article>
+                    <article class="card" aria-labelledby="f2">
+                        <h3 id="f2">Toegankelijkheid</h3>
+                        <p>Semantische markup, focus-hints en een duidelijke structuur voor schermlezers.</p>
+                    </article>
+                    <article class="card" aria-labelledby="f3">
+                        <h3 id="f3">Lichtgewicht</h3>
+                        <p>Geen externe bibliotheken: snel laden en makkelijk aan te passen.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contact" style="margin-top:1rem">
+                <h2 style="margin-top:0">Contact</h2>
+                <div class="card" style="margin-top:0.5rem">
+                    <form id="contact-form" novalidate>
+                        <div>
+                            <label for="name">Naam</label>
+                            <input id="name" name="name" type="text" placeholder="Je naam" required />
+                        </div>
+                        <div>
+                            <label for="email">E‑mail</label>
+                            <input id="email" name="email" type="email" placeholder="naam@voorbeeld.nl" required />
+                        </div>
+                        <div>
+                            <label for="message">Bericht</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Typ je bericht..." required></textarea>
+                        </div>
+
+                        <div style="display:flex;gap:0.5rem;align-items:center;margin-top:0.35rem">
+                            <button type="submit" class="btn">Verstuur</button>
+                            <button type="reset" class="btn secondary">Wis</button>
+                            <div id="form-message" role="status" aria-live="polite" style="margin-left:auto" class="muted"></div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <footer class="footer" role="contentinfo">
+                <div>© <span id="year"></span> Ercole — eenvoudige demo. Gemaakt voor demonstratiedoeleinden.</div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        (function(){
+            // Theme handling
+            const btn = document.getElementById('theme-toggle');
+            const stored = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initial = stored || (prefersDark ? 'dark' : 'light');
+
+            function applyTheme(t){
+                document.documentElement.setAttribute('data-theme', t);
+                btn.textContent = t === 'dark' ? '🌙' : '☀️';
+                btn.setAttribute('aria-pressed', t === 'dark');
+                localStorage.setItem('theme', t);
+            }
+            applyTheme(initial);
+
+            btn.addEventListener('click', () => {
+                const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                applyTheme(next);
+                btn.focus();
+            });
+
+            // Contact form handling (client-side only)
+            const form = document.getElementById('contact-form');
+            const msg = document.getElementById('form-message');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                msg.textContent = '';
+                const data = new FormData(form);
+                const name = (data.get('name') || '').trim();
+                const email = (data.get('email') || '').trim();
+                const message = (data.get('message') || '').trim();
+
+                if(!name || !email || !message){
+                    showFeedback('Vul alle velden in.', true);
+                    return;
+                }
+                if(!/^\S+@\S+\.\S+$/.test(email)){
+                    showFeedback('Voer een geldig e‑mailadres in.', true);
+                    return;
+                }
+
+                // Simuleer verzending
+                showFeedback('Dank je — je bericht is verzonden!', false);
+                form.reset();
+            });
+
+            function showFeedback(text, isError){
+                msg.textContent = text;
+                msg.style.color = isError ? '#db2b39' : 'var(--muted)';
+            }
+
+            // Year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+</html>"></html>
